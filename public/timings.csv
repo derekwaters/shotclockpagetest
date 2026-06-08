@@ -1,0 +1,530 @@
+# Shot Clock Trainer — timings.csv
+#
+# Each row maps a YouTube video timestamp to a game event.
+#
+# Columns:
+#   video_time  — seconds from the start of the YouTube video
+#   event_type  — one of:
+#                   QuarterStart    (quarter begins; set game_clock to full quarter length)
+#                   QuarterEnd      (quarter ends)
+#                   GameClockStart  (clock starts running)
+#                   GameClockStop   (clock stops: dead ball, timeout, etc.)
+#                   ShotClockStart  (shot clock begins counting)
+#                   ShotClockStop   (shot clock stops with time remaining)
+#                   ShotClockReset24 (shot clock reset to 24 seconds)
+#                   ShotClockReset14 (shot clock reset to 14 seconds)
+#   quarter     — 1, 2, 3, or 4
+#   game_clock  — remaining time in quarter as MM:SS (e.g. 11:45)
+#   shot_clock  — shot clock value in seconds (decimal ok); blank if not applicable
+#   notes       — short description of the event/rule (e.g. "Turnover", "Shooting Foul")
+#                 displayed on screen when the event fires; blank to show nothing
+#
+# Replace the sample rows below with the actual timecodes for this video.
+#
+video_time,event_type,quarter,game_clock,shot_clock,notes
+22,QuarterStart,1,10:00,,
+22,GameClockStart,1,10:00,,
+22,ShotClockStart,1,10:00,24,Game Starts
+50,ShotClockReset24,1,09:32,24,Timing Error
+57,ShotClockStop,1,09:25,,Ball Hit Ring
+58,ShotClockStart,1,09:24,,Ball Recovered by Offense
+62,ShotClockReset24,1,09:20,24,Turnover
+79,ShotClockReset24,1,09:03,24,Turnover
+86,ShotClockReset24,1,08:56,24,Turnover
+101,ShotClockStop,1,08:41,,Ball Hit Ring
+105,ShotClockReset24,1,08:37,24,Turnover
+110,ShotClockStop,1,08:32,,Score
+110,ShotClockReset24,1,08:32,24,
+111,ShotClockStart,1,08:31,,
+134,ShotClockStop,1,08:08,,Ball Hit Ring
+135,ShotClockReset24,1,08:07,24,Turnover
+141,ShotClockStop,1,08:01,,Score
+141,ShotClockReset24,1,08:01,24,
+143,ShotClockStart,1,07:59,,
+156,ShotClockReset24,1,07:46,24,Turnover
+172,ShotClockStop,1,07:30,,Score
+172,ShotClockReset24,1,07:30,24,
+175,ShotClockStart,1,07:27,,
+200,ShotClockStop,1,07:02,,Ball Hit Ring
+202,ShotClockStart,1,07:00,,Recovered by Defence
+202,ShotClockReset24,1,07:00,24,
+212,ShotClockReset24,1,06:50,24,Turnover
+228,ShotClockStop,1,06:34,,Ball Hit Ring
+229,ShotClockStart,1,06:33,,
+229,ShotClockReset24,1,06:33,24,
+242,ShotClockStop,1,06:20,,Ball Hit Ring
+243,ShotClockStart,1,06:19,,
+243,ShotClockReset24,1,06:19,24,
+246,GameClockStop,1,06:16,,Foul (No Shot Clock Reset over 14 seconds)
+246,ShotClockStop,1,06:16,,
+260,GameClockStart,1,06:16,,
+260,ShotClockStart,1,06:16,,
+275,GameClockStop,1,06:01,,Shooting Foul (14 second reset)
+275,ShotClockStop,1,06:01,,
+275,ShotClockReset14,1,06:01,14,
+304,GameClockStart,1,06:01,,
+304,ShotClockStart,1,06:01,,
+304,ShotClockReset24,1,06:01,24,
+319,ShotClockReset24,1,05:46,24,Turnover
+327,ShotClockStop,1,05:38,,Score
+327,ShotClockReset24,1,05:38,24,
+328,ShotClockStart,1,05:37,,
+334,ShotClockReset24,1,05:31,24,Turnover
+340,ShotClockReset24,1,05:25,24,Turnover
+348,ShotClockStop,1,05:17,,Ball Hit Ring
+349,ShotClockStart,1,05:16,,
+349,ShotClockReset24,1,05:16,24,Recovered by Defence
+361,ShotClockStop,1,05:04,,Ball Hit Ring
+362,ShotClockStart,1,05:03,,
+362,ShotClockReset24,1,05:03,24,Recovered by Defence
+368,ShotClockReset24,1,04:57,24,Turnover
+375,ShotClockReset24,1,04:50,24,Turnover
+386,GameClockStop,1,04:39,,Out of Bounds Turnover
+386,ShotClockStop,1,04:39,,
+386,ShotClockReset24,1,04:39,,
+400,GameClockStart,1,04:39,,
+400,ShotClockStart,1,04:39,,
+421,ShotClockStop,1,04:18,,Score
+421,ShotClockReset24,1,04:18,24,
+423,ShotClockStart,1,04:16,,
+435,ShotClockStop,1,04:04,,Ball Hit Ring
+437,ShotClockReset24,1,04:02,24,Recovered by Defence
+437,ShotClockStart,1,04:02,,
+438,ShotClockReset24,1,04:01,24,Turnover
+440,ShotClockStop,1,03:59,,Score
+440,ShotClockReset24,1,03:59,,
+441,ShotClockStart,1,03:58,,
+452,ShotClockStop,1,03:47,,Score
+452,ShotClockReset24,1,03:47,24,
+454,ShotClockStart,1,03:45,,
+463,ShotClockStop,1,03:36,,Score
+463,ShotClockReset24,1,03:36,,
+469,GameClockStop,1,03:30,,Foul
+485,GameClockStart,1,03:30,,
+485,ShotClockStart,1,03:30,,
+502,GameClockStop,1,03:13,7,Out-of-bounds (no shot clock reset as no change of possession)
+502,ShotClockStop,1,03:13,,
+522,GameClockStart,1,03:13,,
+522,ShotClockStart,1,03:13,,
+529,GameClockStop,1,03:06,,Out-of-bounds (turnover)
+529,ShotClockStop,1,03:06,,
+529,ShotClockReset24,1,03:06,24,
+546,GameClockStart,1,03:06,,
+546,ShotClockStart,1,03:06,,
+567,ShotClockStop,1,02:45,,Ball Hit Ring
+570,ShotClockStart,1,02:42,,
+570,ShotClockReset24,1,02:42,24,Recovered by Defense
+575,ShotClockStop,1,02:37,,Score
+575,ShotClockReset24,1,02:37,24,
+577,ShotClockStart,1,02:35,,
+595,ShotClockStop,1,02:17,,Ball Hit Ring
+597,GameClockStop,1,02:15,,"Foul, then Timeout"
+597,ShotClockReset24,1,02:15,24,
+614,GameClockStart,1,02:15,,
+614,ShotClockStart,1,02:15,,
+632,ShotClockReset24,1,01:57,24,Turnover
+651,GameClockStop,1,01:38,,Shooting Foul
+651,ShotClockStop,1,01:38,,
+651,ShotClockReset14,1,01:38,14,
+693,GameClockStart,1,01:38,,
+693,ShotClockStart,1,01:38,,
+693,ShotClockReset24,1,01:38,24,
+698,QuarterEnd,1,01:33,,
+711,QuarterStart,2,10:00,24,
+711,ShotClockReset24,2,10:00,24,
+711,ShotClockStart,2,10:00,24,
+723,ShotClockStop,2,09:48,,Score
+723,ShotClockReset24,2,09:48,24,
+726,ShotClockStart,2,09:45,,
+740,ShotClockStop,2,09:31,,Out Of Bounds
+751,ShotClockReset24,2,09:20,24,Turnover
+751,ShotClockStart,2,09:20,,
+764,ShotClockStop,2,09:07,,Score
+764,ShotClockReset24,2,09:07,24,
+765,ShotClockStart,2,09:06,,
+784,GameClockStop,2,08:47,,Shooting Foul
+784,ShotClockStop,2,08:47,,
+784,ShotClockReset14,2,08:47,14,
+823,GameClockStart,2,08:47,,
+823,ShotClockStart,2,08:47,,
+823,ShotClockReset24,2,08:47,24,Recovered by Defence
+841,ShotClockStop,2,08:29,,Ball Hit Ring
+842,ShotClockReset24,2,08:28,24,Recovered by Defence
+854,ShotClockStop,2,08:16,,Score
+854,ShotClockReset24,2,08:16,24,
+856,ShotClockStart,2,08:14,,
+872,ShotClockStop,2,07:58,,Ball Hit Ring
+872,ShotClockReset14,2,07:58,14,Recovered by Offense
+872,ShotClockStart,2,07:58,,
+874,ShotClockStop,2,07:56,,Score
+874,ShotClockReset24,2,07:56,24,
+876,ShotClockStart,2,07:54,,
+892,ShotClockStop,2,07:38,,Ball Hit Ring
+893,ShotClockReset24,2,07:37,,Recovered by Defence
+893,ShotClockStart,2,07:37,,
+902,ShotClockStop,2,07:28,,Score
+902,ShotClockReset24,2,07:28,24,
+905,GameClockStop,2,07:25,,Timeout
+920,GameClockStart,2,07:25,,
+920,ShotClockStart,2,07:25,,
+935,ShotClockStop,2,07:10,,Score
+935,ShotClockReset24,2,07:10,24,
+937,ShotClockStart,2,07:08,,
+948,ShotClockReset24,2,06:57,24,Turnover
+956,ShotClockStop,2,06:49,,Ball Hit Ring
+958,ShotClockReset14,2,06:47,14,Recovered by Offense
+958,ShotClockStart,2,06:47,,
+962,ShotClockReset24,2,06:43,,Turnover
+966,ShotClockStop,2,06:39,,Score
+966,ShotClockReset24,2,06:39,24,
+969,ShotClockStart,2,06:36,,
+982,ShotClockStop,2,06:23,,Score
+982,ShotClockReset24,2,06:23,24,
+985,ShotClockStart,2,06:20,,
+998,ShotClockReset24,2,06:07,24,Turnover
+1008,ShotClockStop,2,05:57,,Ball Hit Ring
+1011,ShotClockReset24,2,05:54,,Recovered by Defense
+1011,ShotClockStart,2,05:54,,
+1020,ShotClockStop,2,05:45,,Score
+1020,ShotClockReset24,2,05:45,,
+1022,ShotClockStart,2,05:43,,
+1037,ShotClockStop,2,05:28,,Score
+1037,ShotClockReset24,2,05:28,24,
+1039,ShotClockStart,2,05:26,,
+1060,ShotClockReset24,2,05:05,24,Turnover
+1069,ShotClockStop,2,04:56,,Score
+1069,ShotClockReset24,2,04:56,24,
+1072,GameClockStop,2,04:53,,Timeout
+1079,GameClockStart,2,04:53,,
+1079,ShotClockStart,2,04:53,,
+1100,ShotClockStop,2,04:32,,Ball Hit Ring
+1102,ShotClockReset24,2,04:30,24,Recovered by Defence
+1102,ShotClockStart,2,04:30,,
+1111,ShotClockStop,2,04:21,,Score
+1111,ShotClockReset24,2,04:21,24,
+1115,ShotClockStart,2,04:17,,
+1116,GameClockStop,2,04:16,,Out of Bounds Turnover
+1116,ShotClockStop,2,04:16,,
+1116,ShotClockReset24,2,04:16,24,
+1133,GameClockStart,2,04:16,,
+1133,ShotClockStart,2,04:16,,
+1144,ShotClockStop,2,04:05,,Ball Hit Ring
+1145,ShotClockReset24,2,04:04,24,Recovered by Defence
+1145,ShotClockStart,2,04:04,,
+1165,ShotClockStop,2,03:44,,Score
+1165,ShotClockReset24,2,03:44,24,
+1167,ShotClockStart,2,03:42,,
+1177,ShotClockStop,2,03:32,,Score
+1177,ShotClockReset24,2,03:32,24,
+1180,ShotClockStart,2,03:29,,
+1192,ShotClockStop,2,03:17,,Ball Hit Ring
+1194,ShotClockReset24,2,03:15,24,Recovered by Defence
+1194,ShotClockStart,2,03:15,,
+1211,ShotClockStop,2,02:58,,Score
+1211,ShotClockReset24,2,02:58,24,
+1214,ShotClockStart,2,02:55,,
+1225,ShotClockStop,2,02:44,,Score
+1225,ShotClockReset24,2,02:44,24,
+1228,ShotClockStart,2,02:41,,
+1237,ShotClockReset24,2,02:32,24,Turnover
+1241,ShotClockReset24,2,02:28,24,Turnover
+1247,ShotClockStop,2,02:22,,Ball Hit Ring
+1248,ShotClockStart,2,02:21,,(No reset due to being over 14 seconds)
+1251,ShotClockReset24,2,02:18,24,Turnover
+1256,ShotClockStop,2,02:13,,Score
+1256,ShotClockReset24,2,02:13,24,
+1259,ShotClockStart,2,02:10,,
+1275,ShotClockStop,2,01:54,,Ball Hit Ring
+1276,ShotClockReset24,2,01:53,24,Recovered by Defence
+1276,ShotClockStart,2,01:53,,
+1280,QuarterEnd,2,01:49,,
+1291,QuarterStart,3,10:00,,
+1291,ShotClockReset24,3,10:00,24,
+1291,GameClockStart,3,10:00,,
+1291,ShotClockStart,3,10:00,,
+1303,ShotClockStop,3,09:48,,Score
+1303,ShotClockReset24,3,09:48,24,
+1305,ShotClockStart,3,09:46,,
+1315,ShotClockStop,3,09:36,,Ball Hit Ring
+1317,ShotClockReset14,3,09:34,14,Recovered by Offense
+1324,GameClockStop,3,09:27,,Out of Bounds
+1324,ShotClockStop,3,09:27,,
+1327,ShotClockReset24,3,09:27,,Turnover (Wait for Ref's Signal)
+1335,GameClockStart,3,09:27,,
+1335,ShotClockStart,3,09:27,,
+1352,ShotClockStop,3,09:10,,Score
+1352,ShotClockReset24,3,09:10,24,
+1355,ShotClockStart,3,09:07,,
+1368,ShotClockReset24,3,08:54,24,Turnover
+1383,ShotClockStop,3,08:39,,Ball Hit Ring
+1385,ShotClockReset24,3,08:37,24,Recovered by Defence
+1385,ShotClockStart,3,08:37,,
+1392,ShotClockStop,3,08:30,,Ball Hit Ring
+1394,ShotClockReset24,3,08:28,24,Recovered by Defence
+1394,ShotClockStart,3,08:28,,
+1402,GameClockStop,3,08:20,,Turnover (Travel)
+1402,ShotClockStop,3,08:20,,
+1402,ShotClockReset24,3,08:20,24,
+1417,GameClockStart,3,08:20,,
+1417,ShotClockStart,3,08:20,,
+1428,GameClockStop,3,08:09,,Shooting Foul
+1428,ShotClockStop,3,08:09,,
+1428,ShotClockReset14,3,08:09,14,
+1461,GameClockStart,3,08:09,,
+1461,ShotClockStart,3,08:09,,
+1464,GameClockStop,3,08:06,,Shooting Foul
+1464,ShotClockStop,3,08:06,,
+1464,ShotClockReset14,3,08:06,14,
+1496,GameClockStart,3,08:06,,
+1496,ShotClockStart,3,08:06,,
+1496,ShotClockReset24,3,08:06,24,
+1505,ShotClockReset24,3,07:57,24,Turnover
+1510,GameClockStop,3,07:52,,Shooting Foul
+1510,ShotClockStop,3,07:52,,
+1510,ShotClockReset14,3,07:52,14,
+1546,GameClockStart,3,07:52,,
+1546,ShotClockStart,3,07:52,,
+1546,ShotClockReset24,3,07:52,,
+1557,ShotClockStop,3,07:41,,Score
+1557,ShotClockReset24,3,07:41,24,
+1559,ShotClockStart,3,07:39,,
+1571,ShotClockStop,3,07:27,,Score
+1571,ShotClockReset24,3,07:27,24,
+1574,ShotClockStart,3,07:24,,
+1597,ShotClockStop,3,07:01,,Score
+1597,ShotClockReset24,3,07:01,24,
+1599,ShotClockStart,3,06:59,,
+1620,ShotClockReset24,3,06:38,24,Turnover
+1625,ShotClockStop,3,06:33,,Score
+1625,ShotClockReset24,3,06:33,24,
+1627,ShotClockStart,3,06:31,,
+1642,GameClockStop,3,06:16,,Shooting Foul
+1642,ShotClockStop,3,06:16,,
+1642,ShotClockReset14,3,06:16,14,
+1696,GameClockStart,3,06:16,,
+1696,ShotClockStart,3,06:16,,
+1696,ShotClockReset24,3,06:16,24,
+1702,GameClockStop,3,06:10,,
+1702,ShotClockStop,3,06:10,,
+1718,GameClockStart,3,06:10,,
+1718,ShotClockStart,3,06:10,,
+1726,ShotClockStop,3,06:02,,Ball Hit Rim
+1729,ShotClockReset24,3,05:59,24,Recovered by Defence
+1738,ShotClockStart,3,05:50,,
+1750,ShotClockStop,3,05:38,,Ball Hit Rim
+1751,ShotClockReset24,3,05:37,24,Recovered by Defence
+1751,ShotClockStart,3,05:37,,
+1763,ShotClockStop,3,05:25,,Score
+1763,ShotClockReset24,3,05:25,24,
+1767,ShotClockStart,3,05:21,,
+1777,GameClockStop,3,05:11,,Out Of Bounds
+1777,ShotClockStop,3,05:11,,
+1790,GameClockStart,3,05:11,,
+1790,ShotClockStart,3,05:11,,
+1797,GameClockStop,3,05:04,,Shooting Foul
+1797,ShotClockStop,3,05:04,,
+1797,ShotClockReset14,3,05:04,14,
+1829,GameClockStart,3,05:04,,
+1829,ShotClockStart,3,05:04,,
+1844,ShotClockStop,3,04:49,,Score
+1844,ShotClockReset24,3,04:49,24,
+1847,ShotClockStart,3,04:46,,
+1859,ShotClockStop,3,04:34,,Ball Hit Rim
+1860,ShotClockReset14,3,04:33,14,Recovered by Offense
+1860,ShotClockStart,3,04:33,,
+1862,ShotClockStop,3,04:31,,Ball Hit Rim
+1863,ShotClockReset14,3,04:30,14,Recovered by Offense
+1863,ShotClockStart,3,04:30,,
+1864,ShotClockStop,3,04:29,,Score
+1864,ShotClockReset24,3,04:29,24,
+1866,ShotClockStart,3,04:27,,
+1875,GameClockStop,3,04:18,,Shooting Foul
+1875,ShotClockStop,3,04:18,,
+1875,ShotClockReset14,3,04:18,14,
+1926,GameClockStart,3,04:18,,
+1926,ShotClockStart,3,04:18,,
+1926,ShotClockReset24,3,04:18,24,
+1930,GameClockStop,3,04:14,,Foul (Bonus Free Throws)
+1930,ShotClockStop,3,04:14,, 
+1968,GameClockStart,3,04:14,,
+1968,ShotClockStart,3,04:14,,
+1968,ShotClockReset24,3,04:14,24,
+1983,ShotClockReset24,3,03:59,24,Turnover
+1998,ShotClockStop,3,03:44,,Ball Hit Rim
+1999,ShotClockReset14,3,03:43,14,Recovered By Offense
+1999,ShotClockStart,3,03:43,,
+2001,GameClockStop,3,03:41,,Shooting Foul
+2001,ShotClockStop,3,03:41,,
+2001,ShotClockReset14,3,03:41,14,
+2015,GameClockStart,3,03:41,,
+2015,ShotClockStart,3,03:41,,
+2015,ShotClockReset24,3,03:41,24,
+2051,ShotClockStop,3,03:05,,Ball Hit Rim
+2053,GameClockStop,3,03:03,,Foul (Bonus Free Throws)
+2099,GameClockStart,3,03:03,,
+2099,ShotClockStart,3,03:03,,
+2099,ShotClockReset24,3,03:03,24,
+2112,GameClockStop,3,02:50,,Out Of Bounds Turnover
+2112,ShotClockStop,3,02:50,,
+2112,ShotClockReset24,3,02:50,24,
+2126,GameClockStart,3,02:50,,
+2126,ShotClockStart,3,02:50,,
+2142,ShotClockStop,3,02:34,,Ball Hit Rim
+2145,ShotClockReset24,3,02:31,24,Recovered By Defence
+2145,ShotClockStart,3,02:31,,
+2154,GameClockStop,3,02:22,,Out Of Bounds
+2154,ShotClockStop,3,02:22,,Timeout
+2173,GameClockStart,3,02:22,,
+2173,ShotClockStart,3,02:22,,
+2178,ShotClockStop,3,02:17,,Ball Hit Rim
+2179,ShotClockReset14,3,02:16,14,Recovered By Offense
+2179,ShotClockStart,3,02:16,,
+2182,GameClockStop,3,02:13,,Shooting Foul
+2182,ShotClockStop,3,02:13,,
+2182,ShotClockReset14,3,02:13,14,
+2220,GameClockStart,3,02:13,,
+2220,ShotClockStart,3,02:13,,
+2220,ShotClockReset24,3,02:13,24,
+2234,ShotClockStop,3,01:59,,Score
+2234,ShotClockReset24,3,01:59,24,
+2236,ShotClockStart,3,01:57,,
+2248,ShotClockStop,3,01:45,,Ball Hit Rim
+2250,ShotClockReset14,3,01:43,14,Recovered By Offense
+2250,ShotClockStart,3,01:43,,
+2261,ShotClockReset24,3,01:32,,Turnover
+2266,ShotClockStop,3,01:27,,Score
+2266,ShotClockReset24,3,01:27,24,
+2269,GameClockStop,3,01:24,,
+2269,ShotClockStop,3,01:24,,
+2269,QuarterEnd,3,01:24,,
+2269,ShotClockReset24,3,01:24,24,
+2281,QuarterStart,4,10:00,,
+2281,GameClockStart,4,10:00,,
+2281,ShotClockStart,4,10:00,,
+2298,GameClockStop,4,09:43,,Shooting Foul
+2298,ShotClockStop,4,09:43,,
+2298,ShotClockReset14,4,09:43,14,
+2328,GameClockStart,4,09:43,,
+2328,ShotClockStart,4,09:43,,
+2330,ShotClockReset24,4,09:41,24,
+2343,ShotClockStop,4,09:28,,Score
+2343,ShotClockReset24,4,09:28,24,
+2345,ShotClockStart,4,09:26,,
+2355,ShotClockStop,4,09:16,,Ball Hit Rim
+2360,ShotClockReset24,4,09:11,,Recovered By Defence
+2360,ShotClockStart,4,09:11,,
+2364,ShotClockStop,4,09:07,,Score
+2364,ShotClockReset24,4,09:07,24,
+2368,ShotClockStart,4,09:03,,
+2382,GameClockStop,4,08:49,,Foul
+2382,ShotClockStop,4,08:49,,
+2382,ShotClockReset14,4,08:49,14,
+2401,GameClockStart,4,08:49,,
+2401,ShotClockStart,4,08:49,,
+2416,ShotClockStop,4,08:34,,Score
+2416,ShotClockReset24,4,08:34,24,
+2419,ShotClockStart,4,08:31,,
+2435,ShotClockReset24,4,08:15,,Turnover
+2453,ShotClockStop,4,07:57,,Ball Hit Rim
+2454,ShotClockReset24,4,07:56,24,Recovered By Defence
+2454,ShotClockStart,4,07:56,,
+2466,ShotClockReset24,4,07:44,24,Turnover
+2471,ShotClockStop,4,07:39,,Ball Hit Rim
+2473,ShotClockReset24,4,07:37,24,Recovered By Defence
+2473,ShotClockStart,4,07:37,,
+2488,ShotClockStop,4,07:22,,Ball Hit Rim
+2489,ShotClockReset24,4,07:21,24,Recovered By Defence
+2489,ShotClockStart,4,07:21,,
+2502,GameClockStop,4,07:08,,Foul
+2502,ShotClockStop,4,07:08,,
+2502,ShotClockReset24,4,07:08,24,
+2524,GameClockStart,4,07:08,,
+2524,ShotClockStart,4,07:08,,
+2537,ShotClockStop,4,06:55,,Ball Hit Rim
+2538,ShotClockReset24,4,06:54,,Recovered By Defence
+2538,ShotClockStart,4,06:54,,
+2556,ShotClockStop,4,06:36,,Score
+2556,ShotClockReset24,4,06:36,24,
+2558,ShotClockStart,4,06:34,,
+2572,ShotClockStop,4,06:20,,Ball Hit Rim
+2576,ShotClockReset14,4,06:16,14,Recovered by Offence
+2576,ShotClockStart,4,06:16,,
+2581,GameClockStop,4,06:11,,Out Of Bounds Turnover
+2581,ShotClockStop,4,06:11,,
+2581,ShotClockReset24,4,06:11,,
+2598,GameClockStart,4,06:11,,
+2598,ShotClockStart,4,06:11,,
+2616,ShotClockReset24,4,05:53,24,Turnover
+2632,ShotClockStop,4,05:37,,Score
+2632,ShotClockReset24,4,05:37,24,
+2635,ShotClockStart,4,05:34,,
+2652,ShotClockReset24,4,05:17,,Turnover
+2657,ShotClockStop,4,05:12,,Score
+2657,ShotClockReset24,4,05:12,24,
+2661,ShotClockStart,4,05:08,,
+2678,ShotClockStop,4,04:51,,Score
+2678,ShotClockReset24,4,04:51,24,
+2680,ShotClockStart,4,04:49,,
+2695,GameClockStop,4,04:34,,Shooting Foul
+2695,ShotClockStop,4,04:34,,
+2695,ShotClockReset14,4,04:34,14,
+2736,GameClockStart,4,04:34,,
+2736,ShotClockStart,4,04:34,,
+2736,ShotClockReset24,4,04:34,24,
+2753,ShotClockStop,4,04:17,,Score
+2753,ShotClockReset24,4,04:17,24,
+2756,ShotClockStart,4,04:14,,
+2763,ShotClockStop,4,04:07,,Score
+2763,ShotClockReset24,4,04:07,24,
+2766,ShotClockStart,4,04:04,,
+2778,GameClockStop,4,03:52,,Shooting Foul
+2778,ShotClockStop,4,03:52,,
+2778,ShotClockReset14,4,03:52,14,
+2813,GameClockStart,4,03:52,,
+2813,ShotClockStart,4,03:52,,
+2813,ShotClockReset24,4,03:52,24,
+2824,GameClockStop,4,03:41,,Out Of Bounds Turnover
+2824,ShotClockStop,4,03:41,,
+2824,ShotClockReset24,4,03:41,24,
+2835,GameClockStart,4,03:41,,
+2835,ShotClockStart,4,03:41,,
+2845,ShotClockStop,4,03:31,,Ball Hit Ring
+2848,ShotClockReset14,4,03:28,14,Recovered By Offense
+2848,ShotClockStart,4,03:28,,
+2850,GameClockStop,4,03:26,,Shooting Foul
+2850,ShotClockStop,4,03:26,,
+2850,ShotClockReset14,4,03:26,14,
+2884,GameClockStart,4,03:26,,
+2884,ShotClockStart,4,03:26,,
+2884,ShotClockReset24,4,03:26,24,
+2897,ShotClockStop,4,03:13,,Score
+2897,ShotClockReset24,4,03:13,24,
+2900,ShotClockStart,4,03:10,,
+2912,ShotClockStop,4,02:58,,Ball Hit Ring
+2915,ShotClockReset24,4,02:55,24,Recovered By Defence
+2915,ShotClockStart,4,02:55,,
+2929,ShotClockStop,4,02:41,,Score
+2929,ShotClockReset24,4,02:41,24,
+2931,ShotClockStart,4,02:39,,
+2941,ShotClockStop,4,02:29,,Ball Hit Ring
+2942,ShotClockReset24,4,02:28,24,Recovered By Defence
+2942,ShotClockStart,4,02:28,,
+2947,ShotClockStop,4,02:23,,Score
+2947,ShotClockReset24,4,02:23,24,
+2949,ShotClockStart,4,02:21,,
+2956,GameClockStop,4,02:14,,Foul (Bonus)
+2956,ShotClockStop,4,02:14,,
+2956,ShotClockReset14,4,02:14,14,
+3006,GameClockStart,4,02:14,,
+3006,ShotClockStart,4,02:14,,
+3006,ShotClockReset24,4,02:14,24,
+3014,ShotClockReset24,4,02:06,24,Turnover
+3019,ShotClockStop,4,02:01,,Ball Hit Ring
+3021,ShotClockReset14,4,01:59,14,Recovered By Offence
+3021,ShotClockStart,4,01:59,,
+3025,ShotClockStop,4,01:55,,Score
+3025,ShotClockReset24,4,01:55,24,
+3029,ShotClockStart,4,01:51,,
+3030,GameClockStop,4,01:50,,
+3030,ShotClockStop,4,01:50,,
+3030,QuarterEnd,4,01:50,,

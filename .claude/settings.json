@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs ls -la)",
+      "Bash(npm run *)",
+      "Read(//home/derek/.nvm/versions/**)",
+      "Read(//usr/local/bin/**)",
+      "Read(//home/derek/**)",
+      "Bash(find /usr /opt /home/derek -name \"node\" -type f 2>/dev/null | grep -v containers | grep -v playwright | head -10)",
+      "Read(//usr/**)",
+      "Bash(ls /app/bin/ 2>/dev/null)",
+      "Read(//app/bin/**)",
+      "Bash(host-spawn which *)",
+      "Bash(host-spawn node *)",
+      "Bash(host-spawn npm *)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(curl -sf http://localhost:3000)",
+      "Bash(curl -sf http://localhost:3002)",
+      "Bash(curl -sf http://localhost:3004)",
+      "Bash(host-spawn chromium-browser *)",
+      "Read(//tmp/**)",
+      "Bash(host-spawn bash *)"
+    ]
+  }
+}
