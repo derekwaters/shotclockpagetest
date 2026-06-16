@@ -415,14 +415,17 @@ export default function Home() {
     }
 
     if (event.notes) setCurrentNote(event.notes)
+    if (['ShotClockStart', 'ShotClockStop', 'ShotClockReset24', 'ShotClockReset14'].includes(event.eventType)) {
+      recalcAccuracy(userActionsRef.current, videoTime)
+    }
   }
 
   function getVideoTime() {
     return playerRef.current?.getCurrentTime?.() ?? 0
   }
 
-  function recalcAccuracy(actions) {
-    const correct = correctActionsRef.current
+  function recalcAccuracy(actions, videoTime) {
+    const correct = correctActionsRef.current.filter(ca => ca.videoTime <= videoTime)
     if (correct.length === 0) return
 
     const usedCorrect = new Set()
@@ -453,7 +456,7 @@ export default function Home() {
   function recordAction(type) {
     const actions = [...userActionsRef.current, { type, videoTime: getVideoTime() }]
     userActionsRef.current = actions
-    recalcAccuracy(actions)
+    recalcAccuracy(actions, getVideoTime())
   }
 
   function toggleHelpMode() {
