@@ -81,6 +81,14 @@ export default function Home() {
     startedAt: null,
   })
 
+  // Ideal shot clock (video-time based, derived from timings)
+  const idealShotRef = useRef({
+    running: false,
+    secsAtStart: SHOT_CLOCK_FULL,
+    baseVideoTime: 0,
+  })
+  const helpModeRef = useRef(false)
+
   // Accuracy
   const userActionsRef = useRef([])
   const correctActionsRef = useRef([])
@@ -96,10 +104,14 @@ export default function Home() {
   const [accuracy, setAccuracy] = useState(null)
   const [accuracyStats, setAccuracyStats] = useState({ correct: 0, total: 0 })
   const [currentNote, setCurrentNote] = useState('')
+  const [helpMode, setHelpMode] = useState(false)
+  const [idealShotDisplay, setIdealShotDisplay] = useState(String(SHOT_CLOCK_FULL))
+
+  helpModeRef.current = helpMode
 
   // Load timings CSV
   useEffect(() => {
-    fetch('/timings.csv')
+    fetch(`${process.env.NEXT_PUBLIC_BASE_PATH}/timings.csv`)
       .then(r => (r.ok ? r.text() : Promise.reject()))
       .then(text => {
         const events = parseCSV(text)
@@ -279,6 +291,14 @@ export default function Home() {
         }
       }
 
+      // Update ideal shot clock display
+      const is = idealShotRef.current
+      if (is.running && isPlayingRef.current) {
+        const elapsed = videoTime - is.baseVideoTime
+        const remaining = Math.max(0, is.secsAtStart - elapsed)
+        setIdealShotDisplay(formatShotClock(remaining))
+      }
+
       // Update shot clock display
       const s = shotRef.current
       if (s.running && isPlayingRef.current && s.startedAt) {
@@ -348,6 +368,48 @@ export default function Home() {
         setGameClockRunning(false)
         break
 
+      case 'ShotClockStart': {
+        const is = idealShotRef.current
+        if (event.shotClock != null) is.secsAtStart = event.shotClock
+        is.baseVideoTime = event.videoTime
+        is.running = true
+        setIdealShotDisplay(formatShotClock(is.secsAtStart))
+        break
+      }
+
+      case 'ShotClockStop': {
+        const is = idealShotRef.current
+        if (is.running) {
+          const elapsed = videoTime - is.baseVideoTime
+          is.secsAtStart = Math.max(0, is.secsAtStart - elapsed)
+          is.baseVideoTime = videoTime
+          is.running = false
+        }
+        if (event.shotClock != null) {
+          is.secsAtStart = event.shotClock
+          setIdealShotDisplay(formatShotClock(event.shotClock))
+        }
+        break
+      }
+
+      case 'ShotClockReset24': {
+        const is = idealShotRef.current
+        is.secsAtStart = SHOT_CLOCK_FULL
+        is.baseVideoTime = event.videoTime
+        is.running = true
+        setIdealShotDisplay(formatShotClock(SHOT_CLOCK_FULL))
+        break
+      }
+
+      case 'ShotClockReset14': {
+        const is = idealShotRef.current
+        is.secsAtStart = SHOT_CLOCK_ALT
+        is.baseVideoTime = event.videoTime
+        is.running = true
+        setIdealShotDisplay(formatShotClock(SHOT_CLOCK_ALT))
+        break
+      }
+
       default:
         break
     }
@@ -392,6 +454,10 @@ export default function Home() {
     const actions = [...userActionsRef.current, { type, videoTime: getVideoTime() }]
     userActionsRef.current = actions
     recalcAccuracy(actions)
+  }
+
+  function toggleHelpMode() {
+    setHelpMode(prev => !prev)
   }
 
   // Store handlers in refs so the keyboard handler always calls the latest version
@@ -477,9 +543,27 @@ export default function Home() {
         {/* Shot Clock */}
         <div className={`${styles.panel} ${styles.panelCenter}`}>
           <div className={styles.panelLabel}>Shot Clock</div>
-          <div className={`${styles.shotClockTime} ${shotClockRunning && isPlaying ? styles.clockActive : ''} ${shotUrgent ? styles.clockUrgent : ''} ${shotExpired ? styles.clockExpired : ''}`}>
-            {shotClockDisplay}
-          </div>
+          {helpMode ? (
+            <div className={styles.dualClockRow}>
+              <div className={styles.dualClockCol}>
+                <div className={styles.dualClockLabel}>Yours</div>
+                <div className={`${styles.dualClockTime} ${shotClockRunning && isPlaying ? styles.clockActive : ''} ${shotUrgent ? styles.clockUrgent : ''} ${shotExpired ? styles.clockExpired : ''}`}>
+                  {shotClockDisplay}
+                </div>
+              </div>
+              <div className={styles.dualClockDivider} />
+              <div className={styles.dualClockCol}>
+                <div className={styles.dualClockLabel}>Ideal</div>
+                <div className={`${styles.dualClockTime} ${styles.idealClock}`}>
+                  {idealShotDisplay}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className={`${styles.shotClockTime} ${shotClockRunning && isPlaying ? styles.clockActive : ''} ${shotUrgent ? styles.clockUrgent : ''} ${shotExpired ? styles.clockExpired : ''}`}>
+              {shotClockDisplay}
+            </div>
+          )}
           <div className={`${styles.statusPill} ${shotClockRunning && isPlaying ? styles.pillRunning : ''} ${shotExpired ? styles.pillExpired : ''}`}>
             {shotExpired ? 'VIOLATION' : !isPlaying ? 'PAUSED' : shotClockRunning ? 'RUNNING' : 'STOPPED'}
           </div>
@@ -516,6 +600,13 @@ export default function Home() {
             >
               <span>Alt Reset (14s)</span>
               <kbd className={styles.kbd}>T</kbd>
+            </button>
+            <button
+              className={`${styles.btn} ${helpMode ? styles.btnHelpOn : styles.btnHelpOff}`}
+              onClick={toggleHelpMode}
+            >
+              <span>Help Mode</span>
+              <span className={styles.kbd}>{helpMode ? 'ON' : 'OFF'}</span>
             </button>
           </div>
           <div className={styles.videoStatus}>
