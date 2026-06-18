@@ -218,6 +218,24 @@ When `document.hidden` becomes true while playing, call `player.pauseVideo()`.
 
 **Important**: all mutable clock state lives in refs (not React state) to avoid stale closures inside the RAF callback. Only display values (`setGameClockDisplay`, `setShotClockDisplay`, etc.) are React state and trigger re-renders.
 
+## Responsive Layout (Mobile Portrait)
+
+On screens ≤ 640 px wide the layout adapts so all UI is reachable without scrolling.
+
+**Video**: `flex: none; aspect-ratio: 16/9` — caps the video to its natural widescreen height (~211 px on a 375 px phone) instead of taking two-thirds of the viewport, giving the panels adequate space.
+
+**Panel reflow**: the three panels break into two rows via `flex-wrap: wrap`:
+- **Top row** — Game Clock (50 %) and Shot Clock (50 %) side-by-side
+- **Bottom row** — Controls full width (100 %)
+
+The Controls panel is now ~350 px wide rather than ~125 px, so button labels and shortcut badges fit comfortably on one line.
+
+**Border adjustments**: `panelCenter`'s left/right borders are cleared (they belong to the 3-column layout), and a top border is added between the two rows.
+
+**Tighter sizing**: panel padding reduced to `6px 10px`, button padding to `8px 12px`, button font to `0.85rem`, clock display sizes reduced to fixed values (`1.5rem` game clock, `2rem` shot clock, `1.3rem` dual/accuracy).
+
+**Safety net**: `overflow-y: auto` on the panels area handles unusually short viewports (e.g. landscape phones or browsers with large chrome).
+
 ## Keyboard Shortcuts
 
 All shortcuts are registered on `window` via a single `keydown` listener. Events from `INPUT`/`TEXTAREA` elements are ignored.

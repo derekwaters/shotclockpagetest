@@ -477,3 +477,82 @@
 .guideContent li {
   margin-bottom: 8px;
 }
+
+/* ── Mobile portrait ─────────────────────────────── */
+
+@media (max-width: 640px) {
+  /* Cap video to its natural 16:9 height so panels get the rest */
+  .videoSection {
+    flex: none;
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Safety net: scroll if the device is unusually short */
+  .panels {
+    overflow-y: auto;
+  }
+
+  /* Reflow: Game Clock + Shot Clock side-by-side (top row),
+     Controls full-width (bottom row) */
+  .panelRow {
+    flex-wrap: wrap;
+  }
+
+  .panelRow .panel:nth-child(1) {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .panelRow .panel:nth-child(2) {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .panelRow .panel:nth-child(3) {
+    flex: 0 0 100%;
+    max-width: 100%;
+    border-top: 1px solid #222;
+    border-right: none;
+  }
+
+  /* Clear the panelCenter side borders — they don't suit the 2-column layout */
+  .panelCenter {
+    border-left: none;
+    border-right: none;
+  }
+
+  /* Tighter panel padding and gaps */
+  .panel {
+    padding: 6px 10px;
+    gap: 3px;
+  }
+
+  /* Clock sizes */
+  .gameClockTime {
+    font-size: 1.5rem;
+  }
+
+  .shotClockTime {
+    font-size: 2rem;
+  }
+
+  .dualClockTime {
+    font-size: 1.3rem;
+  }
+
+  .accuracyPct {
+    font-size: 1.3rem;
+  }
+
+  /* Controls: full-width buttons */
+  .controlButtons {
+    max-width: none;
+    width: 100%;
+    gap: 5px;
+  }
+
+  .btn {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
