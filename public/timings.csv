@@ -59,12 +59,11 @@ video_time,event_type,quarter,game_clock,shot_clock,notes
 246,ShotClockStop,1,06:16,,
 260,GameClockStart,1,06:16,,
 260,ShotClockStart,1,06:16,,
-275,GameClockStop,1,06:01,,Shooting Foul (14 second reset)
+275,GameClockStop,1,06:01,,Shooting Foul
 275,ShotClockStop,1,06:01,,
-275,ShotClockReset14,1,06:01,14,
+275,ShotClockReset24,1,06:01,24,
 304,GameClockStart,1,06:01,,
 304,ShotClockStart,1,06:01,,
-304,ShotClockReset24,1,06:01,24,
 319,ShotClockReset24,1,05:46,24,Turnover
 327,ShotClockStop,1,05:38,,Score
 327,ShotClockReset24,1,05:38,24,
@@ -125,10 +124,9 @@ video_time,event_type,quarter,game_clock,shot_clock,notes
 632,ShotClockReset24,1,01:57,24,Turnover
 651,GameClockStop,1,01:38,,Shooting Foul
 651,ShotClockStop,1,01:38,,
-651,ShotClockReset14,1,01:38,14,
+651,ShotClockReset24,1,01:38,24,
 693,GameClockStart,1,01:38,,
 693,ShotClockStart,1,01:38,,
-693,ShotClockReset24,1,01:38,24,
 698,QuarterEnd,1,01:33,,
 711,QuarterStart,2,10:00,24,
 711,ShotClockReset24,2,10:00,24,
@@ -144,7 +142,7 @@ video_time,event_type,quarter,game_clock,shot_clock,notes
 765,ShotClockStart,2,09:06,,
 784,GameClockStop,2,08:47,,Shooting Foul
 784,ShotClockStop,2,08:47,,
-784,ShotClockReset14,2,08:47,14,
+784,ShotClockReset24,2,08:47,24,
 823,GameClockStart,2,08:47,,
 823,ShotClockStart,2,08:47,,
 823,ShotClockReset24,2,08:47,24,Recovered by Defence
@@ -269,22 +267,20 @@ video_time,event_type,quarter,game_clock,shot_clock,notes
 1417,ShotClockStart,3,08:20,,
 1428,GameClockStop,3,08:09,,Shooting Foul
 1428,ShotClockStop,3,08:09,,
-1428,ShotClockReset14,3,08:09,14,
+1428,ShotClockReset24,3,08:09,24,
 1461,GameClockStart,3,08:09,,
 1461,ShotClockStart,3,08:09,,
 1464,GameClockStop,3,08:06,,Shooting Foul
 1464,ShotClockStop,3,08:06,,
-1464,ShotClockReset14,3,08:06,14,
+1464,ShotClockReset24,3,08:06,24,
 1496,GameClockStart,3,08:06,,
 1496,ShotClockStart,3,08:06,,
-1496,ShotClockReset24,3,08:06,24,
 1505,ShotClockReset24,3,07:57,24,Turnover
 1510,GameClockStop,3,07:52,,Shooting Foul
 1510,ShotClockStop,3,07:52,,
-1510,ShotClockReset14,3,07:52,14,
+1510,ShotClockReset24,3,07:52,24,
 1546,GameClockStart,3,07:52,,
 1546,ShotClockStart,3,07:52,,
-1546,ShotClockReset24,3,07:52,,
 1557,ShotClockStop,3,07:41,,Score
 1557,ShotClockReset24,3,07:41,24,
 1559,ShotClockStart,3,07:39,,
@@ -300,10 +296,9 @@ video_time,event_type,quarter,game_clock,shot_clock,notes
 1627,ShotClockStart,3,06:31,,
 1642,GameClockStop,3,06:16,,Shooting Foul
 1642,ShotClockStop,3,06:16,,
-1642,ShotClockReset14,3,06:16,14,
+1642,ShotClockReset24,3,06:16,24,
 1696,GameClockStart,3,06:16,,
 1696,ShotClockStart,3,06:16,,
-1696,ShotClockReset24,3,06:16,24,
 1702,GameClockStop,3,06:10,,
 1702,ShotClockStop,3,06:10,,
 1718,GameClockStart,3,06:10,,
@@ -323,7 +318,7 @@ video_time,event_type,quarter,game_clock,shot_clock,notes
 1790,ShotClockStart,3,05:11,,
 1797,GameClockStop,3,05:04,,Shooting Foul
 1797,ShotClockStop,3,05:04,,
-1797,ShotClockReset14,3,05:04,14,
+1797,ShotClockReset24,3,05:04,24,
 1829,GameClockStart,3,05:04,,
 1829,ShotClockStart,3,05:04,,
 1844,ShotClockStop,3,04:49,,Score
@@ -340,10 +335,9 @@ video_time,event_type,quarter,game_clock,shot_clock,notes
 1866,ShotClockStart,3,04:27,,
 1875,GameClockStop,3,04:18,,Shooting Foul
 1875,ShotClockStop,3,04:18,,
-1875,ShotClockReset14,3,04:18,14,
+1875,ShotClockReset24,3,04:18,24,
 1926,GameClockStart,3,04:18,,
 1926,ShotClockStart,3,04:18,,
-1926,ShotClockReset24,3,04:18,24,
 1930,GameClockStop,3,04:14,,Foul (Bonus Free Throws)
 1930,ShotClockStop,3,04:14,, 
 1968,GameClockStart,3,04:14,,
@@ -355,10 +349,9 @@ video_time,event_type,quarter,game_clock,shot_clock,notes
 1999,ShotClockStart,3,03:43,,
 2001,GameClockStop,3,03:41,,Shooting Foul
 2001,ShotClockStop,3,03:41,,
-2001,ShotClockReset14,3,03:41,14,
+2001,ShotClockReset24,3,03:41,24,
 2015,GameClockStart,3,03:41,,
 2015,ShotClockStart,3,03:41,,
-2015,ShotClockReset24,3,03:41,24,
 2051,ShotClockStop,3,03:05,,Ball Hit Rim
 2053,GameClockStop,3,03:03,,Foul (Bonus Free Throws)
 2099,GameClockStart,3,03:03,,
@@ -381,10 +374,9 @@ video_time,event_type,quarter,game_clock,shot_clock,notes
 2179,ShotClockStart,3,02:16,,
 2182,GameClockStop,3,02:13,,Shooting Foul
 2182,ShotClockStop,3,02:13,,
-2182,ShotClockReset14,3,02:13,14,
+2182,ShotClockReset24,3,02:13,24,
 2220,GameClockStart,3,02:13,,
 2220,ShotClockStart,3,02:13,,
-2220,ShotClockReset24,3,02:13,24,
 2234,ShotClockStop,3,01:59,,Score
 2234,ShotClockReset24,3,01:59,24,
 2236,ShotClockStart,3,01:57,,
@@ -403,10 +395,9 @@ video_time,event_type,quarter,game_clock,shot_clock,notes
 2281,ShotClockStart,4,10:00,,
 2298,GameClockStop,4,09:43,,Shooting Foul
 2298,ShotClockStop,4,09:43,,
-2298,ShotClockReset14,4,09:43,14,
+2298,ShotClockReset24,4,09:43,24,
 2328,GameClockStart,4,09:43,,
 2328,ShotClockStart,4,09:43,,
-2330,ShotClockReset24,4,09:41,24,
 2343,ShotClockStop,4,09:28,,Score
 2343,ShotClockReset24,4,09:28,24,
 2345,ShotClockStart,4,09:26,,
@@ -467,10 +458,9 @@ video_time,event_type,quarter,game_clock,shot_clock,notes
 2680,ShotClockStart,4,04:49,,
 2695,GameClockStop,4,04:34,,Shooting Foul
 2695,ShotClockStop,4,04:34,,
-2695,ShotClockReset14,4,04:34,14,
+2695,ShotClockReset24,4,04:34,24,
 2736,GameClockStart,4,04:34,,
 2736,ShotClockStart,4,04:34,,
-2736,ShotClockReset24,4,04:34,24,
 2753,ShotClockStop,4,04:17,,Score
 2753,ShotClockReset24,4,04:17,24,
 2756,ShotClockStart,4,04:14,,
@@ -479,10 +469,9 @@ video_time,event_type,quarter,game_clock,shot_clock,notes
 2766,ShotClockStart,4,04:04,,
 2778,GameClockStop,4,03:52,,Shooting Foul
 2778,ShotClockStop,4,03:52,,
-2778,ShotClockReset14,4,03:52,14,
+2778,ShotClockReset24,4,03:52,24,
 2813,GameClockStart,4,03:52,,
 2813,ShotClockStart,4,03:52,,
-2813,ShotClockReset24,4,03:52,24,
 2824,GameClockStop,4,03:41,,Out Of Bounds Turnover
 2824,ShotClockStop,4,03:41,,
 2824,ShotClockReset24,4,03:41,24,
@@ -493,10 +482,9 @@ video_time,event_type,quarter,game_clock,shot_clock,notes
 2848,ShotClockStart,4,03:28,,
 2850,GameClockStop,4,03:26,,Shooting Foul
 2850,ShotClockStop,4,03:26,,
-2850,ShotClockReset14,4,03:26,14,
+2850,ShotClockReset24,4,03:26,24,
 2884,GameClockStart,4,03:26,,
 2884,ShotClockStart,4,03:26,,
-2884,ShotClockReset24,4,03:26,24,
 2897,ShotClockStop,4,03:13,,Score
 2897,ShotClockReset24,4,03:13,24,
 2900,ShotClockStart,4,03:10,,

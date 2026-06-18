@@ -4,8 +4,7 @@ const nextConfig = {
   output: 'export',
   basePath: '/shotclock',
   env: {
-    // Dev server serves public/ under the basePath; production nginx serves out/ from root
-    NEXT_PUBLIC_BASE_PATH: process.env.NODE_ENV === 'development' ? '/shotclock' : '',
+    NEXT_PUBLIC_BASE_PATH: '/shotclock',
   },
 };
 

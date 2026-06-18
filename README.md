@@ -1,20 +1,26 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+It implements a web app trainer for practising operating a shot clock in a basketball game. The specifications of the application are in the REQUIREMENTS.md file.
 
-First, run the development server:
+To run the application in development mode:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+To build the production deployment:
+
+```bash
+npm run build
+```
+
+The static files will be written to the 'out' subfolder.
+
+To build a container image:
+
+
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 

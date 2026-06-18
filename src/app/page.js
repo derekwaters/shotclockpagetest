@@ -3,6 +3,62 @@
 import { useEffect, useRef, useState } from 'react'
 import styles from './page.module.css'
 
+function GuideContent() {
+  return (
+    <div className={styles.guideContent}>
+      <h1>Shot Clock Trainer Guide</h1>
+      <p>This trainer is intended to help you practice running the shot clock against an actual game. Measure your shot clock accuracy against the ideal performance! Don&apos;t worry, you don&apos;t need to be 100% accurate!</p>
+      <p>This guide gives you the basic rules for operating the shot clock.</p>
+
+      <h2>The Trainer</h2>
+      <p>The trainer will show you a YouTube video of a junior match with 4 ten minute quarters, and a 14 and 24 second shot clock. Below the video are three panels.</p>
+      <ol>
+        <li>The left panel shows the game clock during the quarter. This will be tracked automatically by the trainer.</li>
+        <li>The middle panel shows the current shot clock. Once you start using the shot clock, it will show you your accuracy in terms of how many shot clock operations you&apos;ve successfully matched (within a few seconds).</li>
+        <li>The right panel shows the shot clock control buttons. You can also use keyboard shortcuts. The Start / Stop Shot Clock button is a toggle and can be switched with the space bar. The Shot Clock (24 second) Reset can be activated with the &apos;R&apos; key, and the Alternate (14 second) Reset can be activated with the &apos;T&apos; key. There is also a &apos;Help Mode&apos; toggle. If this is turned on, the Shot Clock panel will also show what the Shot Clock should be currently set to.</li>
+      </ol>
+      <p>Below these panels is an information bar that shows information about what is happening in the game (Score, Shooting Foul, Out of Bounds etc)</p>
+
+      <h2>Introduction To The Shot Clock</h2>
+      <p>In this match, and this trainer, the game is played with a 24 second shot clock, and a 14 second alternate reset. This means that in most situations, if the ball is turned over, there&apos;s a score or a foul occurs, the shot clock is reset to 24 seconds. The only times you reset the clock to 14 seconds are if a shot hits the ring and rebounds and is recovered by the offensive team, or a foul occurs inside the front half and the shot clock is already under 14 seconds.</p>
+      <p>As with the game clock, if the shot clock has stopped and a player is passing the ball in, the clock only starts again when a player touches it. If you see a player pass the ball into the court and their teammate lets it roll along the ground next to them, this is because the clock will not start again until they pick the ball up.</p>
+      <p>Note that often the shot clock will also be tied to the game clock so that if the game clock stops, the shot clock will also stop automatically. It is safer to assume this doesn&apos;t happen, and stop the shot clock anyway, just in case.</p>
+
+      <h2>Common Situations and How To Operate The Shot Clock</h2>
+
+      <h3>A Field Goal Is Attempted, But Hits The Ring And Rebounds</h3>
+      <p>This is the tricky situation for shot clock. You should stop the shot clock when the ball hits the ring. It won&apos;t be restarted until possession is regained by either team. If the offensive team recovers the ball, reset the shot clock to 14 seconds, then restart the shot clock. If the defensive team recovers the ball, reset the shot clock to 24 seconds, then restart the shot clock.</p>
+
+      <h3>A Field Goal Is Scored</h3>
+      <p>When a field goal is scored, you should stop the shot clock, reset it to 24 seconds, and then restart the shot clock when the ball is passed back in and touched by a player inbounds. At some levels, the game clock may stop during this period, but even if it does, stop and start the shot clock just in case.</p>
+
+      <h3>A Foul Is Committed</h3>
+      <p>If a foul is committed in the field of play, the shot clock stops and is reset. If the ball is in the front half of the court (ie. the offense has the ball in their scoring end) and the shot clock is under 14 seconds, reset it to 14. Otherwise, reset it to 24 seconds.</p>
+
+      <h3>A Shooting Foul Is Committed</h3>
+      <p>If a foul leads to free throws, you should stop the clock and reset the shot clock to 24 seconds. When the last free throw occurs, if the player makes the basket, start the shot clock again when the ball is touched inbounds after being passed in. If the player doesn&apos;t make the basket, start the shot clock again when possession is taken of the ball by either team.</p>
+
+      <h3>The Ball Goes Out Of Bounds</h3>
+      <p>If the ball goes out of bounds, and doesn&apos;t result in a turnover (ie. the offensive team keeps possession of the ball) then stop the shot clock but do not reset it. If it is a turnover, reset the clock to 24 seconds.</p>
+
+      <h3>A Turnover Or Steal Occurs</h3>
+      <p>In these situations, in theory, you should still stop the shot clock, reset it to 24 seconds, then restart. But often people will just reset to 24 seconds without stopping the clock.</p>
+
+      <h3>The Shot Clock Expires</h3>
+      <p>If the full 24 seconds expire, the Shot Clock Alarm will go off. This results in a turnover which the referees will whistle. You should stop the shot clock, reset it to 24 seconds and restart when the ball is inbounded.</p>
+
+      <h3>A Jump Ball Occurs</h3>
+      <p>If a jump ball is called, stop the clock. The clock is restarted when a team recovers the ball. If the team in possession changes, reset the shot clock to 24 seconds.</p>
+
+      <h3>A Whistle Occurs For Some Other Reason</h3>
+      <p>If the referees blow the whistle, stop the shot clock. If there&apos;s any doubt, the referees can come and reset the shot clock to the correct value.</p>
+
+      <h2>What About With No 14-Second Shot Clock?</h2>
+      <p>If you do not play with a 14 second shot clock reset, just reset to 24 seconds wherever you would normally reset to 14.</p>
+    </div>
+  )
+}
+
 const VIDEO_ID = '_UuXmPtR94c'
 const SHOT_CLOCK_FULL = 24
 const SHOT_CLOCK_ALT = 14
@@ -106,6 +162,7 @@ export default function Home() {
   const [currentNote, setCurrentNote] = useState('')
   const [helpMode, setHelpMode] = useState(false)
   const [idealShotDisplay, setIdealShotDisplay] = useState(String(SHOT_CLOCK_FULL))
+  const [showGuide, setShowGuide] = useState(false)
 
   helpModeRef.current = helpMode
 
@@ -463,6 +520,13 @@ export default function Home() {
     setHelpMode(prev => !prev)
   }
 
+  function handleOpenGuide() {
+    if (isPlayingRef.current) {
+      playerRef.current?.pauseVideo?.()
+    }
+    setShowGuide(true)
+  }
+
   // Store handlers in refs so the keyboard handler always calls the latest version
   const doToggleRef = useRef(null)
   const doResetRef = useRef(null)
@@ -501,6 +565,10 @@ export default function Home() {
   useEffect(() => {
     function onKey(e) {
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return
+      if (e.key === 'Escape') {
+        setShowGuide(false)
+        return
+      }
       if (e.code === 'Space') {
         e.preventDefault()
         doToggleRef.current()
@@ -622,9 +690,27 @@ export default function Home() {
         </div>
         </div>
         <div className={styles.eventNoteBar}>
-          {currentNote}
+          <span className={styles.eventNote}>{currentNote}</span>
+          <div className={styles.noteBarButtons}>
+            <button className={styles.barBtn} onClick={handleOpenGuide}>Guide</button>
+            <a className={styles.barBtn} href="mailto:derek@frisbeeworld.com?subject=Shot%20Clock%20Trainer%20Feedback">Send Feedback</a>
+          </div>
         </div>
       </div>
+
+      {showGuide && (
+        <div className={styles.guideOverlay} onClick={e => { if (e.target === e.currentTarget) setShowGuide(false) }}>
+          <div className={styles.guideDialog}>
+            <div className={styles.guideHeader}>
+              <span className={styles.guideTitle}>Shot Clock Trainer Guide</span>
+              <button className={styles.guideClose} onClick={() => setShowGuide(false)}>Close</button>
+            </div>
+            <div className={styles.guideBody}>
+              <GuideContent />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
